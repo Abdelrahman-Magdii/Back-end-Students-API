@@ -22,6 +22,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SpringSecurity {
 
+
     // Define a bean for AuthenticationManager
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
@@ -51,8 +52,9 @@ public class SpringSecurity {
             .requestMatchers(HttpMethod.POST, "/auth").permitAll()
             .requestMatchers(HttpMethod.POST, "/signin").permitAll()
             .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+            .requestMatchers(HttpMethod.GET,"/swagger-ui/**", "/v3/api.docs/**").permitAll()
             .anyRequest().authenticated()
-                .and()
+            .and()
             .httpBasic();
 
         return http.build();

@@ -2,11 +2,13 @@ package com.spring.student.controller;
 
 import com.spring.student.Services.StudentServices;
 import com.spring.student.model.Student;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Tag(name = "Students")
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api")

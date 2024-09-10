@@ -1,5 +1,6 @@
 package com.spring.student.Services;
 
+import com.spring.student.ErrorHandling.IdNotFound;
 import com.spring.student.dao.StudentRepo;
 import com.spring.student.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,13 @@ public class StudentServices {
     }
 
     public Student getStudentsById(long id) {
-        return studentRepo.findById(id).get();
+//        if (studentRepo.existsById(id)) {
+            return studentRepo.findById(id).get();
+//        }else {
+//            throw new IdNotFound("Id Not Found");
+//        }
+
+
     }
 
     public Student addStudent(Student student) {
