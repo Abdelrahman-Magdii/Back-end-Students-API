@@ -1,0 +1,24 @@
+name: Build Spring Boot App
+
+on: [ push ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        run: actions/checkout@v4
+
+      - name: Set up JDK 17
+        run: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '22'
+
+      - name: Build with Maven
+        run: mvn clean install
+
+      - name: Test with Maven
+        run: mvn test
+
